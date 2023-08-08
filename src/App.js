@@ -9,13 +9,13 @@ const App = () => {
   return (
     <div>
       <nav>
-        {/* Links for navigation */}
+       
         <Link to="/">Home</Link>
         <Link to="/pizza">Pizza</Link>
       </nav>
 
       <Routes>
-        {/* Define your routes */}
+       
         <Route path="/" element={<Home />} />
         <Route path="/pizza" element={<Form />} />
       </Routes>

@@ -26,7 +26,6 @@ function Form() {
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
 
-    // Handle checkboxes separately
     if (type === 'checkbox') {
       if (checked) {
         setFormValues((prevFormValues) => ({
