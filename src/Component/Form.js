@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import schema from './Validation.js';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const initialFormValues = {
   name: '',
@@ -29,20 +29,17 @@ function Form() {
     // Handle checkboxes separately
     if (type === 'checkbox') {
       if (checked) {
-        // Add the checkbox value to toppings array
         setFormValues((prevFormValues) => ({
           ...prevFormValues,
           toppings: [...prevFormValues.toppings, value],
         }));
       } else {
-        // Remove the checkbox value from toppings array
         setFormValues((prevFormValues) => ({
           ...prevFormValues,
           toppings: prevFormValues.toppings.filter((topping) => topping !== value),
         }));
       }
     } else {
-      // Handle other form inputs
       const newValue = type === 'checkbox' ? (checked ? value : '') : value;
       validate(name, newValue);
       setFormValues((prevFormValues) => ({
@@ -55,7 +52,6 @@ function Form() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.post('https://reqres.in/api/orders', formValues).then((res) => {
-      // Handle the response here if needed
       console.log('Response:', res.data);
     });
   };
@@ -126,6 +122,9 @@ function Form() {
       <button id="order-button" type="submit" disabled={disabled}>
         Submit!
       </button>
+
+      {/* Adding a link to navigate back */}
+      <Link to="/">Back to Home</Link>
     </form>
   );
 }
