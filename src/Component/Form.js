@@ -60,7 +60,7 @@ function Form() {
       .reach(schema, name)
       .validate(value)
       .then(() => setErrors({ ...errors, [name]: '' }))
-      .catch((err) => setErrors({ ...errors, [name]: err.message }));
+      .catch((err) => {console.log (err) ;setErrors({ ...errors, [name]: err.message })});
   };
 
   useEffect(() => {
@@ -118,7 +118,7 @@ function Form() {
         onChange={handleChange}
         value={formValues.special}
       />
-      <button id="order-button" type="submit" disabled={disabled}>
+      <button id="order-button" type="submit">
         Submit!
       </button>
 
